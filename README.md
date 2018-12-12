@@ -1,7 +1,7 @@
 # SHConcertoMusicPlayer
 
 
-This is Music Player for Multiple Music Play In a Same Time with Perfect Sync. SH_ConcertoMusicPlayer is support Streaming. 
+This is Multiple Music Player in a Same Time with Perfect Sync. SHConcertoMusicPlayer is support Streaming. 
 
 ## Requirements
 
@@ -34,7 +34,7 @@ This is Music Player for Multiple Music Play In a Same Time with Perfect Sync. S
 #### struct:
  * `PlayInfo(duration: Float = 0.0, currentTime: Float = 0.0)`
     * After Initailize Player, Completion Handler give Duration and Current Time.
- *  `SongList(keySong: URL?, songList: [URL])`
+ * `SongList(keySong: URL?, songList: [URL])`
     * Play based on Key Song. if it is nil, First Song to songList become Key Song
 
 
