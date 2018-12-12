@@ -1,4 +1,4 @@
-# SH_ConcertoMusicPlayer
+# SHConcertoMusicPlayer
 
 
 This is Music Player for Multiple Music Play In a Same Time with Perfect Sync. SH_ConcertoMusicPlayer is support Streaming. 
@@ -10,7 +10,7 @@ This is Music Player for Multiple Music Play In a Same Time with Perfect Sync. S
 
 
 #### Initializers:
-* `MusicPlayer.shared.initializePlayer(songs: SongList, play: Bool, completion: (PlayInfo?) -> Void)`
+* `ConsertoMusicPlayer.shared.initializePlayer(songs: SongList, play: Bool, completion: (PlayInfo?) -> Void)`
 
 #### properties:
 * `var nowPlaying: Bool`
@@ -40,18 +40,18 @@ This is Music Player for Multiple Music Play In a Same Time with Perfect Sync. S
 
 #### Example:
 ```
-MusicPlayer.shared.initializePlayer(songs: songList, play: true) { (playInfo) in
+ConsertoMusicPlayer.shared.initializePlayer(songs: songList, play: true) { (playInfo) in
     let duration = playInfo.duration
     let currentTime = playInfo.currentTime
 }
 
-let playing: Bool = MusicPlayer.shared.nowPlaying
+let playing: Bool = ConsertoMusicPlayer.shared.nowPlaying
 
-NotificationCenter.default.addObserver(self, selector: #selector(self.StartPlayMusic(_:)), name: MusicPlayer.shared.StartPlaySongNotification, object: nil)
-NotificationCenter.default.addObserver(self, selector: #selector(self.EndPlayMusic(_:)), name: MusicPlayer.shared.EndPlaySongNotification, object: nil)
+NotificationCenter.default.addObserver(self, selector: #selector(self.StartPlayMusic(_:)), name: ConsertoMusicPlayer.shared.StartPlaySongNotification, object: nil)
+NotificationCenter.default.addObserver(self, selector: #selector(self.EndPlayMusic(_:)), name: ConsertoMusicPlayer.shared.EndPlaySongNotification, object: nil)
 
-MusicPlayer.shared.switchPlayOrPause(isPlaying: true)
-MusicPlayer.shared.chagePlayTime(second: 60.0)
+ConsertoMusicPlayer.shared.switchPlayOrPause(isPlaying: true)
+ConsertoMusicPlayer.shared.chagePlayTime(second: 60.0)
 ```
 
 
