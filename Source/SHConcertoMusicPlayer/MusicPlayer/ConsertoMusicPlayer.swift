@@ -147,36 +147,45 @@ open class ConsertoMusicPlayer {
     
     // MARK:- Return Current Time
     public func currentTime() -> Double? {
-        return self.player[0].currentItem?.currentTime().seconds
+        return keyPlayerItem?.currentTime().seconds
     }
     
     // MARK:- Return Duration
     public func duration() -> Double? {
-        return self.player[0].currentItem?.asset.duration.seconds
+        return keyPlayerItem?.asset.duration.seconds
     }
     
     // MARK:- Play And Pause Method
     final func Play(isPlaying: Bool) {
         if isPlaying {
-            nowPlaying = true
-            for i in player.indices {
-                setAVPlayerItemObserver(key: i, item: player[i].currentItem!)
-            }
-            checkObserver()
+            setPlay()
         } else {
-            nowPlaying = false
-            readyToPlay = false
-            stopPlay()
-            playTime = player[0].currentTime()
+            setPause()
         }
+    }
+    
+    private func setPlay() {
+        nowPlaying = true
+        for i in player.indices {
+            setAVPlayerItemObserver(key: i, item: player[i].currentItem!)
+        }
+        checkObserver()
+    }
+    private func setPause() {
+        nowPlaying = false
+        readyToPlay = false
+        stopPlay()
+        playTime = keyPlayerItem?.currentTime() ?? CMTimeMake(value: 1, timescale: 600)
     }
     
     // MARK:- Change Current Play Time
     final func chagePlayTime(second: Float) {
-        let maxValue = Float(player[0].currentItem!.asset.duration.seconds)
-        let presentValse = second
+        if let duration = keyPlayerItem?.asset.duration.seconds {
+            playRate = min((second / Float(duration)) + 0.1, 1.0)
+        } else {
+            playRate = 1.0
+        }
         
-        playRate = min((presentValse / maxValue) + 0.1, 1.0)
         stopPlay()
         readyToPlay = false
         
@@ -195,9 +204,8 @@ open class ConsertoMusicPlayer {
     
     // MARK:- After End Music
     @objc private func finishMusic(note: Notification) {
-        guard let item = player[0].currentItem, let noti = note.object as? AVPlayerItem, item == noti else { return }
-        NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.post(name: ConsertoMusicPlayer.shared.EndPlaySongNotification, object: nil)
+        guard let item = keyPlayerItem, let noti = note.object as? AVPlayerItem, item == noti else { return }
+        NotificationCenter.default.post(name: ConsertoMusicPlayer.shared.EndPlaySongNotification, object: item)
         
         stopPlay()
         playTime = CMTimeMake(value: 1, timescale: 600)

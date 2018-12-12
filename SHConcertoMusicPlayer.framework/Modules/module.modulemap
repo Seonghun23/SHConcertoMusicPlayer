@@ -1,0 +1,11 @@
+framework module SHConcertoMusicPlayer {
+  umbrella header "SHConcertoMusicPlayer.h"
+
+  export *
+  module * { export * }
+}
+
+module SHConcertoMusicPlayer.Swift {
+    header "SHConcertoMusicPlayer-Swift.h"
+    requires objc
+}
