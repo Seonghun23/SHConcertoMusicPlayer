@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		A329F8FE21C1281B0062660F /* SHConcertoMusicPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A329F8FC21C1281B0062660F /* SHConcertoMusicPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A329F90621C13E2B0062660F /* ConsertoMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A329F90521C13E2B0062660F /* ConsertoMusicPlayer.swift */; };
+		A329F90921C13EA10062660F /* PlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A329F90821C13EA10062660F /* PlayInfo.swift */; };
+		A329F90B21C13ED10062660F /* SongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A329F90A21C13ED10062660F /* SongList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A329F8F921C1281B0062660F /* SHConcertoMusicPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHConcertoMusicPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A329F8FC21C1281B0062660F /* SHConcertoMusicPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHConcertoMusicPlayer.h; sourceTree = "<group>"; };
 		A329F8FD21C1281B0062660F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A329F90521C13E2B0062660F /* ConsertoMusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsertoMusicPlayer.swift; sourceTree = "<group>"; };
+		A329F90821C13EA10062660F /* PlayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayInfo.swift; sourceTree = "<group>"; };
+		A329F90A21C13ED10062660F /* SongList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +52,29 @@
 		A329F8FB21C1281B0062660F /* SHConcertoMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				A329F90421C128400062660F /* MusicPlayer */,
+				A329F90721C13E6A0062660F /* Models */,
 				A329F8FC21C1281B0062660F /* SHConcertoMusicPlayer.h */,
 				A329F8FD21C1281B0062660F /* Info.plist */,
 			);
 			path = SHConcertoMusicPlayer;
+			sourceTree = "<group>";
+		};
+		A329F90421C128400062660F /* MusicPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				A329F90521C13E2B0062660F /* ConsertoMusicPlayer.swift */,
+			);
+			path = MusicPlayer;
+			sourceTree = "<group>";
+		};
+		A329F90721C13E6A0062660F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A329F90821C13EA10062660F /* PlayInfo.swift */,
+				A329F90A21C13ED10062660F /* SongList.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +120,7 @@
 				TargetAttributes = {
 					A329F8F821C1281A0062660F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -130,6 +156,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A329F90B21C13ED10062660F /* SongList.swift in Sources */,
+				A329F90621C13E2B0062660F /* ConsertoMusicPlayer.swift in Sources */,
+				A329F90921C13EA10062660F /* PlayInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +290,7 @@
 		A329F90221C1281B0062660F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -278,6 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = seonghun.SHConcertoMusicPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +317,7 @@
 		A329F90321C1281B0062660F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
