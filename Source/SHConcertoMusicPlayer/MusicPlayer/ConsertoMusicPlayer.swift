@@ -11,6 +11,11 @@ import AVFoundation
 
 open class ConsertoMusicPlayer {
     // MARK:- Singleton
+    /**
+     Concerto Music Player Singleton Class.
+     
+     This class include every properties ans method for Concerto Music Player.
+     */
     static let shared = ConsertoMusicPlayer()
     
     // MARK:- Notification Name Properties
@@ -31,10 +36,42 @@ open class ConsertoMusicPlayer {
     private var statusKeyPathObserver = [Int:NSKeyValueObservation]()
     
     // MARK:- play Status
+    /**
+     Play status Property.
+     
+     When Music Player is Playing, It's true.
+     */
     public var nowPlaying = false
     private var readyToPlay = false
     
     // MARK:- Initialize
+    /**
+     Change View to Grade View.
+     
+     This Method change layout, background color and text about UIView.
+     
+     ```
+     let keySong = URL(string: "https://UrlAddress")
+     let songList = [URL(string: "https://UrlAddress"), URL(string: "https://UrlAddress"), URL(string: "https://UrlAddress")]
+     
+     let songs = SongList(keySong: URL(), songList: [URL()])
+     let play = true
+     
+     initializePlayer(songs: songs, play: play, completion: { (playInfo: PlayInfo?) in
+        if let playInfo = playInfo {
+            // Success Initialize Conserto Music Player
+        } else {
+            // Fail Initialize Conserto Music Player
+        }
+     })
+     
+     ```
+     
+     - parameters:
+        - songs: Play Song List.
+        - play: If it's true, Play Song immediately after ready.
+        - completion: It's include Play Information.
+     */
     final func initializePlayer(songs: SongList, play: Bool, completion: (PlayInfo?) -> Void) {
         stopPlay()
         player = []
@@ -146,16 +183,34 @@ open class ConsertoMusicPlayer {
     }
     
     // MARK:- Return Current Time
+    /**
+     Return Key Song's current time.
+     
+     When you need to current tiem to Key Song, Call this method. And then, Return current time in Double.
+     */
     public func currentTime() -> Double? {
         return keyPlayerItem?.currentTime().seconds
     }
     
     // MARK:- Return Duration
+    /**
+     Return Key Song's duration.
+     
+     When you need to duration to Key Song, Call this method. And then, Return duration in Double.
+     */
     public func duration() -> Double? {
         return keyPlayerItem?.asset.duration.seconds
     }
     
     // MARK:- Play And Pause Method
+    /**
+     Play or Pause Concerto Music Player.
+     
+     This method handle Play and Pause to Concerto Music Player.
+     
+     - parameters:
+        - isPlaying: If it's true, Start to Concerto Music Player. otherwise, Pause to Concerto Music Player.
+     */
     final func Play(isPlaying: Bool) {
         if isPlaying {
             setPlay()
@@ -179,6 +234,14 @@ open class ConsertoMusicPlayer {
     }
     
     // MARK:- Change Current Play Time
+    /**
+     Set Play tiem to Concerto Music Player.
+     
+     This method change current time to Concerto Music Player, If Player need to prepare for play music, Pause music and Play after ready to play.
+     
+     - parameters:
+        - second: Play time in second.
+     */
     final func chagePlayTime(second: Float) {
         if let duration = keyPlayerItem?.asset.duration.seconds {
             playRate = min((second / Float(duration)) + 0.1, 1.0)
