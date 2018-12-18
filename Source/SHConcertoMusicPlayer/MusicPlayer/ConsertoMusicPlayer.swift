@@ -154,7 +154,7 @@ open class ConsertoMusicPlayer {
             for i in player {
                 i.preroll(atRate: playRate) { (bool) in
                     count += 1
-                    if count == 8, self.nowPlaying {
+                    if count == self.player.count, self.nowPlaying {
                         self.startPlay()
                     }
                 }
